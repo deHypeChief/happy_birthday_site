@@ -1,0 +1,256 @@
+@font-face {
+    font-family: Castle;
+    src: url("../assets/bont.otf");
+}
+*{
+    margin: 0;
+    box-sizing: border-box;
+    color: inherit;
+}
+
+:root{
+    overflow-x: hidden;
+    margin: 0;
+}
+
+
+main{
+    min-height: 100vh;
+}
+section{
+    min-height: 100vh;
+}
+h1{
+    font-size: 4rem;
+    font-family: Castle;
+}
+h2{
+    font-size: 3rem;
+    font-family: Castle;
+    line-height: 60px;
+}
+p{
+    font-size: 16px;
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+button{
+    background: black;
+    color: white;
+    padding: 20px 30px;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+nav{
+    padding: 0px 50px;  
+    position: fixed;  
+    width: 100%;
+    background: white;
+}
+.logo h3{
+    font-size: 2rem;
+    font-family: Castle;
+
+}
+.navWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.images{
+    height: 160vh;
+    margin-top: 60px;
+}
+.imgWrap{
+    position: relative;
+    z-index: -1;
+}
+.imgBoxs{
+    position: absolute;
+}
+.imgBoxs:nth-child(1){
+    background: black;
+    transform: translateY(10vh) translateX(2vw);
+    height: 800px;
+    width: 450px;
+}
+.imgBoxs:nth-child(2){
+    background: red;
+    transform: translateY(50vh) translateX(70vw);
+
+    height: 400px;
+    width: 350px;
+}
+.imgBoxs:nth-child(3){
+    background: green;
+    transform: translateY(96vh) translateX(50vw);
+
+    height: 300px;
+    width: 450px;
+}
+
+
+
+.imgBoxs:nth-child(5){
+    transform: translateY(20vh) translateX(30vw);
+    height: 250px;
+    width:450px;
+    background: blue;
+
+}
+.textImg{
+    height: 150vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.textImgWrap{
+
+}
+.textImgWrap h1{ 
+    padding-bottom: 30px;
+    font-size: 8rem;
+}
+
+.hero{
+    display: flex;
+    align-items: flex-end;
+    color: black;
+}
+.HeroTextWrap{
+    width: 100%;
+    padding: 60px 50px;
+}
+
+.HeroTextWrap p{
+    width: 420px;
+    padding: 30px 0;
+}
+
+.popText{
+    display: grid;
+    place-content: center;
+}
+.popWrap{
+    width: 800px;
+}
+
+.popWrap h2{
+    padding-bottom: 50px;
+}
+
+.intro{
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgb(0, 0, 0);
+}
+
+
+/* Hero */
+
+.posts{
+
+}
+.postWrap{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.imageTall{
+    height: 100vh;
+    background: black;
+}
+
+.textSection{
+    display: grid;
+    place-content: center;
+}
+.textWrapSec{
+    width: 400px;
+}
+.textWrapSec h1{
+    padding: 0 0 30px;
+}
+.textWrapSec p{
+    text-align: justify;
+}
+.conBttn{
+    display: flex;
+    gap: 20px;
+}
+.controlsSec{
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.controlsSec p{
+    font-size: 30px;
+}
+.conBox{
+    height: 60px;
+    width: 60px;
+    background: black;
+    border-radius: 100px;
+}
+
+/* Footer */
+.footertop{
+    height: 150vh;
+    background: black;
+}
+.socialBox{
+    height: 40px;
+    width: 40px;
+    background: black;
+
+}
+
+.footerbottom{
+    padding: 60px 50px 20px;
+}
+.socials{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+.contact{
+    text-align: center;
+    padding: 10px 0;
+}
+.contact p:nth-child(1){
+    font-size: 20px;
+}
+.footerDel{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.postForm{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+#name{
+    border: none;
+    margin: 30px 0 0;
+    font-size: 3rem;
+
+}
+.textarea{
+    border: none;
+    height: 500px;
+    padding: 30px;
+    outline: none;
+}
