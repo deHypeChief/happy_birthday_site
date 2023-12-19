@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 export default function Home() {
-    const [isDone, setDone] = useState(false)
+    const [isDone, setDone] = useState(true)
 
 
     return (
