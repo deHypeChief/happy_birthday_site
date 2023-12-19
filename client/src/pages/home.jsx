@@ -58,27 +58,39 @@ export function Navbar() {
 
 
 import axios from "axios";
-
 function HomeContent() {
     const [posts, setPosts] = useState([{
         name: '...',
         message: 'loading messages...',
-        img: ''
+        img: {
+            data: {},
+            contentType: ''
+        }
     }])
     const [count, setCount] = useState(0)
     const [postData, setPostData] = useState({
         name: '...',
         message: 'loading messages...',
-        img: ''
+        img: {
+            data: {},
+            contentType: ''
+        }
     })
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/')
+        axios.get('https://hbs-api.vercel.app/api')
             .then((res) => {
-                setPosts(res.data.posts)
+                setPosts(res.data.posts > 0 ? res.data.posts : [{
+                    name: '...',
+                    message: 'loading messages...',
+                    img: {
+                        data: {},
+                        contentType: ''
+                    }
+                }])
             })
-            console.log(posts);
-            setPostData(posts[count])
+        console.log(posts);
+        setPostData(posts[count])
     }, [count, postData, posts])
 
 
@@ -94,7 +106,7 @@ function HomeContent() {
         if (count < posts.length - 1) {
             setCount(count + 1);
             console.log(count);
-            setPostData(posts[count + 1]); 
+            setPostData(posts[count + 1]);
         }
     }
 
@@ -140,7 +152,7 @@ function HomeContent() {
 
                         </div>
                         <div className="controlsSec">
-                            <p>{count } of {posts.length}</p>
+                            <p>{count +1} of {posts.length}</p>
                             <div className="conBttn">
                                 <div className="conBox" onClick={handleBack}>
                                     <BiArrowBack color='white' />
@@ -153,7 +165,7 @@ function HomeContent() {
                     </div>
                     <div className="Image">
                         <div className="imageTall">
-                            <img src={postData.img.data} alt="" />
+                            {/* {getImage(postData.img.data)} */}
                         </div>
                     </div>
                 </div>

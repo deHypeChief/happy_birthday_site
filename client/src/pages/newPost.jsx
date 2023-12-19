@@ -42,17 +42,18 @@ const NewPost = () => {
         postData.append('message', formData.message);
         postData.append('image', formData.image);
 
-        axios.post('http://localhost:8000/api/postUpload', postData, {
+        axios.post('https://hbs-api.vercel.app/api/postUpload', postData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
         })
-            .then(response => {
-                console.log(response.data);
-                // Handle success, if needed
+            .then(() => {
+                alert('Your goodwill message has been sent')
             })
-            .catch(error => {
-                console.error('Error submitting form:', error);
+            .catch((error) => {
+                console.log(error);
+                alert('Error sending your message. Try a different Image')
+
             });
     };
 
