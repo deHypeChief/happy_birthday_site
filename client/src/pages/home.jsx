@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { BiArrowBack } from "react-icons/bi";
+import { useEffect, useState } from "react"
 
-export default function Home() {
+export function Home() {
     const [isDone, setDone] = useState(true)
 
 
@@ -18,8 +20,9 @@ export default function Home() {
                     ) : (
                         <>
                             <Navbar />
+
                             <HomeContent />
-            <Footer />
+                            <Footer />
 
                         </>
                     )
@@ -30,27 +33,75 @@ export default function Home() {
     )
 }
 
-function Navbar() {
+
+import { Link } from 'react-router-dom'
+export function Navbar() {
     return (
         <nav>
             <div className="navWrap">
                 <div className="logo">
-                    <h3>LOGO</h3>
+                    <Link to={'/'}>
+                        <h3>LOGO</h3>
+                    </Link>
                 </div>
                 <div className="other">
-                    <button>
-                        Post A Message
-                    </button>
+                    <Link to={'/newPost'}>
+                        <button>
+                            Post A Message
+                        </button>
+                    </Link>
                 </div>
             </div>
         </nav>
     )
 }
 
+
+import axios from "axios";
+
 function HomeContent() {
+    const [posts, setPosts] = useState([{
+        name: '...',
+        message: 'loading messages...',
+        img: ''
+    }])
+    const [count, setCount] = useState(0)
+    const [postData, setPostData] = useState({
+        name: '...',
+        message: 'loading messages...',
+        img: ''
+    })
+
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/')
+            .then((res) => {
+                setPosts(res.data.posts)
+            })
+            console.log(posts);
+            setPostData(posts[count])
+    }, [count, postData, posts])
+
+
+    function handleBack() {
+        if (count > 0) {
+            setCount(count - 1)
+            console.log(count);
+            setPostData(posts[count - 1])
+        }
+    }
+
+    function handleFwd() {
+        if (count < posts.length - 1) {
+            setCount(count + 1);
+            console.log(count);
+            setPostData(posts[count + 1]); 
+        }
+    }
+
     return (
         <>
             <section className="hero">
+
                 <div className="HeroTextWrap">
                     <h1>
                         Prof Mary Doe
@@ -84,20 +135,26 @@ function HomeContent() {
                 <div className="postWrap">
                     <div className="textSection">
                         <div className="textWrapSec">
-                            <h1>My MAin Text</h1>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto ea, nostrum cumque culpa, dolorem doloremque nobis officia id assumenda laudantium ut iste eum aliquid libero iusto est et odio dicta.</p>
+                            <h1>{postData.name}</h1>
+                            <p>{postData.message}</p>
 
                         </div>
                         <div className="controlsSec">
-                            <p>1 of 23</p>
+                            <p>{count } of {posts.length}</p>
                             <div className="conBttn">
-                                <div className="conBox"></div>
-                                <div className="conBox"></div>
+                                <div className="conBox" onClick={handleBack}>
+                                    <BiArrowBack color='white' />
+                                </div>
+                                <div className="conBox" onClick={handleFwd}>
+                                    <AiOutlineArrowRight color='white' />
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="Image">
-                        <div className="imageTall"></div>
+                        <div className="imageTall">
+                            <img src={postData.img.data} alt="" />
+                        </div>
                     </div>
                 </div>
             </section>

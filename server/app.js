@@ -11,7 +11,7 @@ var fs = require('fs');
 require('dotenv').config()
 const PORT = process.env.PORT || 3000
 connectToMongoDB(
-    process.env.NODE_EVN == 'dev' ? 
+    process.env.NODE_EVN === 'dev' ? 
         "mongodb://localhost:27017/happyPost" : 
         process.env.DB_URI 
     )

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Navbar } from './home';
 
 const NewPost = () => {
     const [formData, setFormData] = useState({
@@ -14,8 +15,23 @@ const NewPost = () => {
     };
 
     const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        setFormData({ ...formData, image: file });
+        const files = e.target.files[0];
+        setFormData({ ...formData, image: files });
+
+        var preview = document.getElementById('imagePre');
+        var file = document.getElementById('image').files[0];
+        var reader = new FileReader();
+
+        
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+        reader.onloadend = function () {
+            console.log(reader.result.toString());
+            preview.src = reader.result;
+        }
     };
 
     const handleSubmit = (e) => {
@@ -42,6 +58,8 @@ const NewPost = () => {
 
     return (
         <>
+            <Navbar />
+
             <section className="posts">
                 <div className="postWrap">
                     <div className="textSection">
@@ -49,9 +67,9 @@ const NewPost = () => {
                             <form className='postForm' onSubmit={handleSubmit}>
                                     <input required id='name' type="text" name="name" placeholder="Type Your Name" value={formData.name} onChange={handleInputChange} />
 
-                                    <textarea required name="message" cols={50} placeholder="Type Your Message" value={formData.message} onChange={handleInputChange} />
+                                    <textarea required name="message" rows={15} cols={50} placeholder="Type Your Message" value={formData.message} onChange={handleInputChange} />
 
-                                    <input required type="file" name="image" onChange={handleFileChange} />
+                                    <input required id='image' type="file" name="image" onChange={handleFileChange} />
 
                                 <button type="submit">Submit</button>
                             </form>
@@ -59,12 +77,17 @@ const NewPost = () => {
 
                     </div>
                     <div className="Image">
-                        <div className="imageTall"></div>
+                        <div className="imageTall">
+                            <img id='imagePre' src='' alt="" />
+                        </div>
                     </div>
                 </div>
             </section>
         </>
     );
 };
+
+
+
 
 export default NewPost;
