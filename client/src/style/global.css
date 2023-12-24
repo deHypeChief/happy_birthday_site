@@ -17,8 +17,16 @@
     display: flex;
     align-items: center;
 }
+
 img{
     width: 100%;
+}
+.imgLady{
+    height: 500px;
+    margin-bottom: 40px;
+    width: 100%;
+    background: url(../assets/Lady.jpg);
+    background-size: cover;
 }
 
 main{

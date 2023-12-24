@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+
 import {Link, useNavigate} from 'react-router-dom'
 
 const NewPost = () => {
@@ -18,8 +19,9 @@ const NewPost = () => {
 
     const handleFileChange = (e) => {
         const files = e.target.files[0];
+        // create a connection
+        
         setFormData({ ...formData, image: files });
-
         var preview = document.getElementById('imagePre');
         var file = document.getElementById('image').files[0];
         var reader = new FileReader();
@@ -31,18 +33,27 @@ const NewPost = () => {
             preview.src = "";
         }
         reader.onloadend = function () {
-            console.log(reader.result.toString());
+            console.log(file);
+            console.log(reader.result);
             preview.src = reader.result;
         }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const postData = new FormData();
+        var file = document.getElementById('image').files[0];
+        
+        var reader = new FileReader();
+        if (file) {
+            reader.readAsDataURL(file);
+        } 
+        reader.onloadend = function () {
+            postData.append('image', reader.result.toString());
+        }
+        
         postData.append('name', formData.name);
         postData.append('message', formData.message);
-        postData.append('image', formData.image);
         // https://hbs-api.vercel.app/api/postUpload
         axios.post('http://localhost:8000/api/postUpload', postData, {
             headers: {

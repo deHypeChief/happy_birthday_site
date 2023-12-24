@@ -65,31 +65,22 @@ function HomeContent() {
         fetchData();
     }, []);
 
-    
-    const ImageComponent = ({ buffer }) => {
-        // // Convert buffer to Blob
-        // const blob = new Blob([buffer], { type: 'image/jpeg' });
-    
-        // // Create a data URL from the Blob
-        // const imageUrl = URL.createObjectURL(blob);
-        // console.log(blob, imageUrl);
-    
-        return <img src={'data:image/'} alt="Buffer Image" />;
-    };
+
 
 
     return (
         <>
             <section className="hero">
+                
 
                 <div className="HeroTextWrap">
                     <h1>
-                        Pst. Mrs. Mary Abiodun Abioye
+                        Pst(Mrs) Mary Abiodun Abioye
                     </h1>
                     <div className="bttnWrap">
-                        <Link to="">
+                        <Link to="https://drive.google.com/file/d/1f4E1U-OuWmUocFg9OuaoMpw1p_c_kwIX/view?usp=sharing">
                             <button>
-                                Download Pictures
+                                Download Event
                             </button>
                         </Link>
                         <Link to={'/newPost'}>
@@ -101,8 +92,12 @@ function HomeContent() {
                 </div>
 
             </section>
+            
 
             <section className="popText">
+            <div className="imgLady">
+                <img src="../assets/abstract-triangle-violet-texture-background.jpg" alt="" />
+            </div>
                 <div className="popWrap">
                     <h2>
                         with warm regards from the our fammily
