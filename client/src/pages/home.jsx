@@ -110,7 +110,7 @@ function HomeContent() {
             </section>
 
             {/* Message Section */}
-            <section className="boxWrap">
+            {/* <section className="boxWrap">
                 <div className="boxPosts">
                     {apiData.posts?.map(item => (
                         <div key={item.name} className="boxesPosts">
@@ -123,7 +123,7 @@ function HomeContent() {
                         </div>
                     ))}
                 </div>
-            </section>
+            </section> */}
         </>
     )
 }

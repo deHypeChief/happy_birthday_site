@@ -34,7 +34,7 @@ const NewPost = () => {
         }
         reader.onloadend = function () {
             console.log(file);
-            console.log(reader.result);
+            console.log(reader.result.toString());
             preview.src = reader.result;
         }
     };
