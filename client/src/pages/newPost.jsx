@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Navbar } from './home';
+import {Link, useNavigate} from 'react-router-dom'
 
 const NewPost = () => {
+    const navTo = useNavigate()
+    
     const [formData, setFormData] = useState({
         name: '',
         message: '',
@@ -41,14 +43,15 @@ const NewPost = () => {
         postData.append('name', formData.name);
         postData.append('message', formData.message);
         postData.append('image', formData.image);
-
-        axios.post('https://hbs-api.vercel.app/api/postUpload', postData, {
+        // https://hbs-api.vercel.app/api/postUpload
+        axios.post('http://localhost:8000/api/postUpload', postData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
         })
             .then(() => {
                 alert('Your goodwill message has been sent')
+                navTo('/')
             })
             .catch((error) => {
                 console.log(error);
@@ -59,7 +62,6 @@ const NewPost = () => {
 
     return (
         <>
-            <Navbar />
 
             <section className="posts">
                 <div className="postWrap">
@@ -73,6 +75,11 @@ const NewPost = () => {
                                     <input required id='image' type="file" name="image" onChange={handleFileChange} />
 
                                 <button type="submit">Submit</button>
+                                <Link to="/">
+                                <button type="button">Cancel</button>
+
+                                </Link>
+                            
                             </form>
                         </div>
 

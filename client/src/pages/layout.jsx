@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Home,Navbar } from './home'
+import { Home } from './home'
 import NewPost from './newPost'
 
 

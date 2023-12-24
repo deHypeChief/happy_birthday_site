@@ -1,6 +1,6 @@
-import { AiOutlineArrowRight } from "react-icons/ai";
-import { BiArrowBack } from "react-icons/bi";
 import { useEffect, useState } from "react"
+
+const ApiUrl = 'https://hbs-api.vercel.app/api'
 
 export function Home() {
     const [isDone, setDone] = useState(true)
@@ -9,24 +9,13 @@ export function Home() {
     return (
         <>
             <main>
-                {
-                    !isDone ? (
-                        <section className="intro">
-                            <div className="intoTextWrap">
-                                <h2>Happy Birthday</h2>
-                                <h1>PST MRS My Full Name</h1>
-                            </div>
-                        </section>
-                    ) : (
-                        <>
-                            <Navbar />
+               
+            <>
 
-                            <HomeContent />
-                            <Footer />
+                <HomeContent />
+                <Footer />
 
-                        </>
-                    )
-                }
+            </>
             </main>
 
         </>
@@ -35,80 +24,59 @@ export function Home() {
 
 
 import { Link } from 'react-router-dom'
-export function Navbar() {
-    return (
-        <nav>
-            <div className="navWrap">
-                <div className="logo">
-                    <Link to={'/'}>
-                        <h3>LOGO</h3>
-                    </Link>
-                </div>
-                <div className="other">
-                    <Link to={'/newPost'}>
-                        <button>
-                            Post A Message
-                        </button>
-                    </Link>
-                </div>
-            </div>
-        </nav>
-    )
-}
+// export function Navbar() {
+//     return (
+//         <nav>
+//             <div className="navWrap">
+//                 <div className="logo">
+//                     <Link to={'/'}>
+//                         <h3>LOGO</h3>
+//                     </Link>
+//                 </div>
+//                 <div className="other">
+//                     <Link to={'/newPost'}>
+//                         <button>
+//                             Post A Message
+//                         </button>
+//                     </Link>
+//                 </div>
+//             </div>
+//         </nav>
+//     )
+// }
 
 
-import axios from "axios";
+const URI = 'http://localhost:8000/api'
 function HomeContent() {
-    const [posts, setPosts] = useState([{
-        name: '...',
-        message: 'loading messages...',
-        img: {
-            data: {},
-            contentType: ''
-        }
-    }])
-    const [count, setCount] = useState(0)
-    const [postData, setPostData] = useState({
-        name: '...',
-        message: 'loading messages...',
-        img: {
-            data: {},
-            contentType: ''
-        }
-    })
+    const [apiData, setApiData] = useState([]);
 
+    // Effect to fetch data from the API
     useEffect(() => {
-        axios.get('https://hbs-api.vercel.app/api')
-            .then((res) => {
-                setPosts(res.data.posts > 0 ? res.data.posts : [{
-                    name: '...',
-                    message: 'loading messages...',
-                    img: {
-                        data: {},
-                        contentType: ''
-                    }
-                }])
-            })
-        console.log(posts);
-        setPostData(posts[count])
-    }, [count, postData, posts])
+        const fetchData = async () => {
+            try {
+                const response = await fetch(URI);
+                const data = await response.json();
+                setApiData(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
+        fetchData();
+    }, []);
 
-    function handleBack() {
-        if (count > 0) {
-            setCount(count - 1)
-            console.log(count);
-            setPostData(posts[count - 1])
-        }
-    }
+    
+    const ImageComponent = ({ buffer }) => {
+        // // Convert buffer to Blob
+        // const blob = new Blob([buffer], { type: 'image/jpeg' });
+    
+        // // Create a data URL from the Blob
+        // const imageUrl = URL.createObjectURL(blob);
+        // console.log(blob, imageUrl);
+    
+        return <img src={'data:image/'} alt="Buffer Image" />;
+    };
 
-    function handleFwd() {
-        if (count < posts.length - 1) {
-            setCount(count + 1);
-            console.log(count);
-            setPostData(posts[count + 1]);
-        }
-    }
 
     return (
         <>
@@ -116,16 +84,19 @@ function HomeContent() {
 
                 <div className="HeroTextWrap">
                     <h1>
-                        Prof Mary Doe
+                        Pst. Mrs. Mary Abiodun Abioye
                     </h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sint aut beatae porro ad optio atque dolorum totam placeat, magni nisi vitae ex quidem maiores corrupti, minus nemo illum eaque!</p>
                     <div className="bttnWrap">
+                        <Link to="">
+                            <button>
+                                Download Pictures
+                            </button>
+                        </Link>
+                        <Link to={'/newPost'}>
                         <button>
-                            Download Pictures
+                            Post A Message
                         </button>
-                        {/* <button>
-                            Write a Message
-                        </button> */}
+                    </Link>
                     </div>
                 </div>
 
@@ -143,61 +114,33 @@ function HomeContent() {
                 </div>
             </section>
 
-            <section className="posts">
-                <div className="postWrap">
-                    <div className="textSection">
-                        <div className="textWrapSec">
-                            <h1>{postData.name}</h1>
-                            <p>{postData.message}</p>
-
-                        </div>
-                        <div className="controlsSec">
-                            <p>{count +1} of {posts.length}</p>
-                            <div className="conBttn">
-                                <div className="conBox" onClick={handleBack}>
-                                    <BiArrowBack color='white' />
-                                </div>
-                                <div className="conBox" onClick={handleFwd}>
-                                    <AiOutlineArrowRight color='white' />
-                                </div>
+            {/* Message Section */}
+            <section className="boxWrap">
+                <div className="boxPosts">
+                    {apiData.posts?.map(item => (
+                        <div key={item.name} className="boxesPosts">
+                            <div className="imgBox">
+                                <img src={`data:${item.img.contentType}; base64, 
+                                ${item.img.data.toString('base64')}`} alt="hello" />
                             </div>
+                            <h1>{item.name}</h1>
+                            <p>{item.message}</p>
                         </div>
-                    </div>
-                    <div className="Image">
-                        <div className="imageTall">
-                            {/* {getImage(postData.img.data)} */}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="images">
-                <div className="imgWrap">
-                    <div className="imgBoxs"></div>
-                    <div className="imgBoxs"></div>
-                    <div className="imgBoxs"></div>
-                    <div className="imgBoxs"></div>
-                    <div className="imgBoxs"></div>
-                </div>
-                <div className="textImg">
-                    <div className="textImgWrap">
-                        <h1>Photo <br /> Bust</h1>
-                        <button>Download Images</button>
-                    </div>
-
+                    ))}
                 </div>
             </section>
         </>
     )
 }
 
+
+
+
+
 function Footer() {
     return (
         <>
             <footer>
-                <div className="footertop">
-
-                </div>
                 <div className="footerbottom">
                     <div className="socials">
                         <div className="socialBox"></div>
