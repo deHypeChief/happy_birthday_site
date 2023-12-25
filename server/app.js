@@ -2,6 +2,7 @@ const express = require('express')
 const connectToMongoDB = require('./db/connectDB')
 const router = require('./services/routes')
 const cors = require('cors')
+const bodyParser = require('body-parser')
 
 var path = require('path');
 var fs = require('fs');
@@ -18,8 +19,10 @@ connectToMongoDB(
 console.log(path.join(__dirname, '..', "u"));
 // middleware
 const app = express()
-app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+// app.use(express.json())
+// app.use(express.urlencoded({extended:false}))
+app.use(bodyParser.json({ limit: '10mb' }))
+app.use(bodyParser.urlencoded({ extended: false, limit: '10mb' }));
 app.use(cors())
 
 

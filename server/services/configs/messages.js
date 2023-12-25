@@ -2,13 +2,13 @@ const multer = require('multer');
 const Post = require('../models/postSchema')
 
 var mongoose = require('mongoose')
-var fs = require('fs');
-var path = require('path');
+// var fs = require('fs');
+// var path = require('path');
 
 // get action: Retriving posts
 const getPosts = async (req, res) => {
     try {
-        const posts = await postSchema.find();
+        const posts = await Post.find();
         res.json({ success: true, posts });
 
     } catch (error) {
@@ -20,7 +20,7 @@ const getPosts = async (req, res) => {
 };
 
 
-const uploadPost = async (req, res, next) => {
+const uploadPost = async (req, res) => {
     const { name, message, image } = req.body;
     try {
         console.log(req.body);
