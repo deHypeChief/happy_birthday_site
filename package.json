@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "server": "pnpm -C ./server start",
-    "client": "pnpm -C ./client run dev--host ",
+    "client": "pnpm -C ./client run dev",
     "start": "concurrently \"pnpm run server\" \"pnpm run client\""
   },
   "keywords": [],

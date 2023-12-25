@@ -75,7 +75,7 @@ const NewPost = () => {
 
                                     <textarea required name="message" rows={15} cols={50} placeholder="Type Your Message" value={formData.message} onChange={handleInputChange} />
 
-                                    <input required id='image' type="file" name="image" onChange={handleFileChange} />
+                                    <input required id='image' accept="image/*" type="file"  name="image" onChange={handleFileChange} />
 
                                 <button type="submit">Submit</button>
                                 <Link to="/">
