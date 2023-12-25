@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
 
 const ApiUrl = 'https://hbs-api.vercel.app/api'
@@ -14,25 +15,22 @@ export function Home() {
 
 
 import { Link } from 'react-router-dom'
-const URI = 'http://localhost:8000/api'
 
 function HomeContent() {
     const [apiData, setApiData] = useState([]);
 
-    // Effect to fetch data from the API
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await fetch(URI);
-    //             const data = await response.json();
-    //             setApiData(data);
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //         }
-    //     };
+    useEffect(() => {
+        // Define the API endpoint
+        const apiUrl = 'https://hbs-api.vercel.app/api';
 
-    //     fetchData();
-    // }, []);
+        axios.get(apiUrl)
+            .then(response => {
+                setApiData(response.data);
+            })
+            .catch(error => {
+                console.log('Error fetching data ', error);
+            });
+    }, []);
 
 
 
@@ -69,12 +67,12 @@ function HomeContent() {
 
             <section className="underText">
                 <div className="underTextWrap">
-                    <p className="varText">
+                    <div className="varText">
                         <p>Celebration Of </p>
                         <h3 className="biggerText">
-                        God's</h3> 
+                            God's</h3>
                         <p>Lovingkindnesses</p>
-                    </p>
+                    </div>
                     <p className="varSub">-Isaiah 63:7</p>
                 </div>
                 <div className="imgText"></div>
@@ -83,20 +81,23 @@ function HomeContent() {
 
 
             {/* Message Section */}
-            {/* <section className="boxWrap">
+            <section className="boxWrap">
+                <div className="textT">
+                    <h1>Goodwill Messages</h1>
+
+                </div>
                 <div className="boxPosts">
                     {apiData.posts?.map(item => (
                         <div key={item.name} className="boxesPosts">
                             <div className="imgBox">
-                                <img src={`data:${item.img.contentType}; base64, 
-                                ${item.img.data.toString('base64')}`} alt="hello" />
+                                <img src={item.img} />
                             </div>
                             <h1>{item.name}</h1>
                             <p>{item.message}</p>
                         </div>
                     ))}
                 </div>
-            </section> */}
+            </section>
             <div className="footer">
                 <p>By FirstClassPilot</p>
             </div>

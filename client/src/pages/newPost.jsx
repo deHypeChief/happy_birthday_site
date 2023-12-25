@@ -10,56 +10,44 @@ const NewPost = () => {
     const [formData, setFormData] = useState({
         name: '',
         message: '',
-        image: null,
+        image: '',
     });
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        console.log(formData);
     };
 
     const handleFileChange = (e) => {
-        const files = e.target.files[0];
-        // create a connection
-        
-        setFormData({ ...formData, image: files });
-        var preview = document.getElementById('imagePre');
-        var file = document.getElementById('image').files[0];
-        var reader = new FileReader();
+        const file = e.target.files[0];
+    
+        const preview = document.getElementById('imagePre');
+        const reader = new FileReader();
+    
+        reader.onloadend = function () {
+            setFileString(reader.result.toString('base64'));
+            setFormData({ ...formData, image: reader.result.toString('base64') });
 
-        
+            preview.src = reader.result;
+        };
+    
         if (file) {
             reader.readAsDataURL(file);
         } else {
-            preview.src = "";
-        }
-        reader.onloadend = function () {
-
-            setFileString(reader.result.toString('base64'))
-            console.log(reader.result.toString('base64'));
-            preview.src = reader.result;
+            preview.src = '';
         }
     };
 
-    console.log(fileString);
+    // console.log(fileString);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const postData = {
-            name: formData.name,
-            message: formData.message,
-            image: fileString
-        }
-        console.log(formData);
         
         
 
         // https://hbs-api.vercel.app/api/postUpload
-        axios.post('http://localhost:8000/api/postUpload', postData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        })
+        axios.post('https://hbs-api.vercel.app/api/postUpload', formData)
             .then(() => {
                 console.log(fileString,'done');
 
@@ -67,6 +55,8 @@ const NewPost = () => {
                 navTo('/')
             })
             .catch((error) => {
+                console.log(formData);
+
                 console.log(error);
                 alert('Error sending your message. Try a different Image')
 
