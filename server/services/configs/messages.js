@@ -1,5 +1,5 @@
 const multer = require('multer');
-const postSchema = require('../models/postSchema')
+const Post = require('../models/postSchema')
 
 var mongoose = require('mongoose')
 var fs = require('fs');
@@ -23,29 +23,28 @@ const getPosts = async (req, res) => {
 const uploadPost = async (req, res, next) => {
     const { name, message, image } = req.body;
     try {
-        // Create post object
-        const obj = {
+        console.log(req.body);
+        
+        const post = new Post({
             name: name,
             message: message,
             img: image
-        };
+        })
 
-        // Create post in the database
-        await postSchema.create(obj) ;
+        if (post) {
+            await post.save()
+            res.status(200).json({
+                success: true,
+                message: 'Post created',
+            })
+        }
 
-
-        // Send success response
-        res.status(200).json({
-            success: true,
-            message: 'Post created',
-        });
-    } catch (error) {
-        // Handle errors and send an appropriate response
+    } catch (err) {
         res.status(500).json({
             success: false,
-            message: 'Error uploading post: ' + error.message,
+            message: 'Error uploading post: ' + err.message,
         });
     }
 };
 
-module.exports = { getPosts, uploadPost, upload }
+module.exports = { getPosts, uploadPost }

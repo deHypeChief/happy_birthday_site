@@ -5,6 +5,7 @@ import {Link, useNavigate} from 'react-router-dom'
 
 const NewPost = () => {
     const navTo = useNavigate()
+    const [fileString, setFileString] = useState()
     
     const [formData, setFormData] = useState({
         name: '',
@@ -33,27 +34,26 @@ const NewPost = () => {
             preview.src = "";
         }
         reader.onloadend = function () {
-            console.log(file);
-            console.log(reader.result.toString());
+
+            setFileString(reader.result.toString('base64'))
+            console.log(reader.result.toString('base64'));
             preview.src = reader.result;
         }
     };
 
+    console.log(fileString);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const postData = new FormData();
-        var file = document.getElementById('image').files[0];
-        
-        var reader = new FileReader();
-        if (file) {
-            reader.readAsDataURL(file);
-        } 
-        reader.onloadend = function () {
-            postData.append('image', reader.result.toString());
+        const postData = {
+            name: formData.name,
+            message: formData.message,
+            image: fileString
         }
+        console.log(formData);
         
-        postData.append('name', formData.name);
-        postData.append('message', formData.message);
+        
+
         // https://hbs-api.vercel.app/api/postUpload
         axios.post('http://localhost:8000/api/postUpload', postData, {
             headers: {
@@ -61,6 +61,8 @@ const NewPost = () => {
             },
         })
             .then(() => {
+                console.log(fileString,'done');
+
                 alert('Your goodwill message has been sent')
                 navTo('/')
             })

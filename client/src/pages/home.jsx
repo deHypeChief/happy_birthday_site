@@ -3,67 +3,36 @@ import { useEffect, useState } from "react"
 const ApiUrl = 'https://hbs-api.vercel.app/api'
 
 export function Home() {
-    const [isDone, setDone] = useState(true)
 
 
     return (
         <>
-            <main>
-               
-            <>
-
-                <HomeContent />
-                <Footer />
-
-            </>
-            </main>
-
+            <HomeContent />
         </>
     )
 }
 
 
 import { Link } from 'react-router-dom'
-// export function Navbar() {
-//     return (
-//         <nav>
-//             <div className="navWrap">
-//                 <div className="logo">
-//                     <Link to={'/'}>
-//                         <h3>LOGO</h3>
-//                     </Link>
-//                 </div>
-//                 <div className="other">
-//                     <Link to={'/newPost'}>
-//                         <button>
-//                             Post A Message
-//                         </button>
-//                     </Link>
-//                 </div>
-//             </div>
-//         </nav>
-//     )
-// }
-
-
 const URI = 'http://localhost:8000/api'
+
 function HomeContent() {
     const [apiData, setApiData] = useState([]);
 
     // Effect to fetch data from the API
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(URI);
-                const data = await response.json();
-                setApiData(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await fetch(URI);
+    //             const data = await response.json();
+    //             setApiData(data);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
 
-        fetchData();
-    }, []);
+    //     fetchData();
+    // }, []);
 
 
 
@@ -71,43 +40,47 @@ function HomeContent() {
     return (
         <>
             <section className="hero">
-                
+                <div className="InfoSection">
+                    <h3>
+                        Happy <br /> Birthday
+                    </h3>
 
-                <div className="HeroTextWrap">
-                    <h1>
-                        Pst(Mrs) Mary Abiodun Abioye
-                    </h1>
-                    <div className="bttnWrap">
-                        <Link to="https://drive.google.com/file/d/1f4E1U-OuWmUocFg9OuaoMpw1p_c_kwIX/view?usp=sharing">
-                            <button>
-                                Download Event
-                            </button>
-                        </Link>
-                        <Link to={'/newPost'}>
-                        <button>
-                            Post A Message
-                        </button>
-                    </Link>
+                    <div className="heroOther">
+                        <div className="imgSection"></div>
+
+                        <div className="bottomText">
+                            <h1>
+                                Pst(Mrs) <br /> Mary Abiodum
+                                <br /> Abioye
+                            </h1>
+
+                            <div className="bttnWrap">
+                                <Link to='https://drive.google.com/file/d/1f4E1U-OuWmUocFg9OuaoMpw1p_c_kwIX/view?usp=sharing'>
+                                    <button>Download Event</button>
+                                </Link>
+                                <Link to='/newPost'>
+                                    <button>Write Goodwill</button>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </section>
-            
 
-            <section className="popText">
-            <div className="imgLady">
-                <img src="../assets/abstract-triangle-violet-texture-background.jpg" alt="" />
-            </div>
-                <div className="popWrap">
-                    <h2>
-                        with warm regards from the our fammily
-                        we thank you and your family for celebreting
-                        the 60th Birthday of a great woman. Thanks for
-                        coming
-                    </h2>
-                    <p>-The Celebrant</p>
+            <section className="underText">
+                <div className="underTextWrap">
+                    <p className="varText">
+                        <p>Celebration Of </p>
+                        <h3 className="biggerText">
+                        God's</h3> 
+                        <p>Lovingkindnesses</p>
+                    </p>
+                    <p className="varSub">-Isaiah 63:7</p>
                 </div>
+                <div className="imgText"></div>
             </section>
+
+
 
             {/* Message Section */}
             {/* <section className="boxWrap">
@@ -124,34 +97,10 @@ function HomeContent() {
                     ))}
                 </div>
             </section> */}
+            <div className="footer">
+                <p>By FirstClassPilot</p>
+            </div>
         </>
     )
 }
 
-
-
-
-
-function Footer() {
-    return (
-        <>
-            <footer>
-                <div className="footerbottom">
-                    <div className="socials">
-                        <div className="socialBox"></div>
-                        <div className="socialBox"></div>
-                        <div className="socialBox"></div>
-                    </div>
-                    <div className="contact">
-                        <p>Contacts</p>
-                        <p>+234 567 8903 2345</p>
-                    </div>
-                    <div className="footerDel">
-                        <p>Developed by deHypeChief</p>
-                        <p>Happy Birthday Ma</p>
-                    </div>
-                </div>
-            </footer>
-        </>
-    )
-}

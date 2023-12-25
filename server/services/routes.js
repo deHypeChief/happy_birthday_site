@@ -3,6 +3,6 @@ const { getPosts, uploadPost, upload } = require('./configs/messages');
 const router = express.Router();
 
 router.get('/', getPosts)
-router.post('/postUpload', upload.single('image') ,uploadPost)
+router.post('/postUpload', uploadPost)
 
 module.exports = router;

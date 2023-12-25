@@ -1,11 +1,8 @@
-@font-face {
-    font-family: Castle;
-    src: url("../assets/bont.otf");
-}
 *{
     margin: 0;
     box-sizing: border-box;
     color: inherit;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 :root{
@@ -13,261 +10,149 @@
     overflow-x: hidden;
     margin: 0;
 }
-.imageTall{
-    display: flex;
-    align-items: center;
-}
-
-img{
-    width: 100%;
-}
-.imgLady{
-    height: 500px;
-    margin-bottom: 40px;
-    width: 100%;
-    background: url(../assets/Lady.jpg);
-    background-size: cover;
-}
-
-main{
-    min-height: 100vh;
-    /* color: #fff; */
-}
-section{
-    min-height: 100vh;
-}
 h1{
-    font-size: 4rem;
-    font-family: Castle;
-}
-h2{
-    font-size: 3rem;
-    font-family: Castle;
-    line-height: 60px;
-}
-p{
-    font-size: 16px;
+    font-size: 150%;
+    text-transform: uppercase;
     font-weight: 500;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 2px;
+    line-height: 25px;
 }
-a{
-    text-decoration: none;
+h3{
+    font-size: 50px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    padding-bottom: 10px;
+}
+
+section{
+    padding: 30px 30px;
+    overflow-x: hidden;
+    position: relative;
 }
 button{
-    background: black;
+    text-transform: uppercase;
+    padding: 15px 9px;
+    background: rgb(162, 14, 162);
+    border: white solid 3px ;
     color: white;
-    padding: 20px 30px;
+    font-weight: 500;
     width: fit-content;
     height: fit-content;
     border: none;
-    font-size: 18px;
-    font-weight: 500;
-}
-nav{
-    padding: 0px 50px;  
-    /* position: fixed;   */
-    width: 100%;
-}
-.logo h3{
-    font-size: 2rem;
-    font-family: Castle;
-
-}
-.navWrap{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-.images{
-    height: 160vh;
-    margin-top: 60px;
-}
-.imgWrap{
-    position: relative;
-    z-index: -1;
-}
-.imgBoxs{
-    position: absolute;
-}
-.imgBoxs:nth-child(1){
-    background: black;
-    transform: translateY(10vh) translateX(2vw);
-    height: 800px;
-    width: 450px;
-}
-.imgBoxs:nth-child(2){
-    background: red;
-    transform: translateY(50vh) translateX(70vw);
-
-    height: 400px;
-    width: 350px;
-}
-.imgBoxs:nth-child(3){
-    background: green;
-    transform: translateY(96vh) translateX(50vw);
-
-    height: 300px;
-    width: 450px;
-}
-
-
-
-.imgBoxs:nth-child(5){
-    transform: translateY(20vh) translateX(30vw);
-    height: 250px;
-    width:450px;
-    background: blue;
-
-}
-.textImg{
-    height: 150vh;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.textImgWrap{
-
-}
-.textImgWrap h1{ 
-    padding-bottom: 30px;
-    font-size: 8rem;
+    font-size: 12px;
+    letter-spacing: 2px;
 }
 
 .hero{
     display: flex;
-    align-items: flex-end;
-    color: black;
-    background-image: url('../assets/abstract-triangle-violet-texture-background.jpg');
-}
-.HeroTextWrap{
-    width: 100%;
-    padding: 60px 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
     flex-direction: column;
-}
-.HeroTextWrap h1{
-    color: white;
-    text-align: center;
-}
-
-.HeroTextWrap p{
-    width: 420px;
-    padding: 30px 0;
-}
-
-.popText{
-    display: grid;
-    place-content: center;
-}
-.popWrap{
-    width: 800px;
-}
-
-.popWrap h2{
-    padding-bottom: 50px;
-}
-
-.intro{
-    width: 100%;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: rgb(0, 0, 0);
-}
-
-
-/* Hero */
-
-.posts{
-
-}
-.postWrap{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-.imageTall{
-    height: 100vh;
     background: black;
+    background-size: cover;
+    color: white;
+    height: 100vh;
 }
+.InfoSection{
+    display: flex;
+    flex-direction: column;
+    /* padding-bottom: 50px; */
+}
+.InfoSection h3{
+    z-index: 1;
+    text-align: right;
+}
+.imgSection{
+    height: 460px;
+    width: 100%;
+    background: url(../assets/BOB02304.jpg);
+    background-size: 180% ;
+    background-position-x: center;
+    background-position-y: -80px;
 
-.textSection{
-    display: grid;
-    place-content: center;
+    margin-top: -50px;
 }
-.textWrapSec{
-    width: 400px;
-}
-.textWrapSec h1{
-    padding: 0 0 30px;
-}
-.textWrapSec p{
-    text-align: justify;
-}
-.conBttn{
+.bottomText{
+    text-align: left;
+    padding-top: 15px;
+    margin-top: -110px;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 30px;
 }
-.controlsSec{
-    padding-top: 50px;
+.heroOther{
+    padding-top: 20vh;
+    margin-top: -180px;
+}
+.bttnWrap{
+    padding-top: 20px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
-.controlsSec p{
+
+
+
+.underText{
+    /* background: url(../assets/two.jpg); */
+    background-size: cover;
+    position: relative;
+    height:120vh;
+}
+.underTextWrap{
+    padding-top: 60px;
+}
+.biggerText{
+    font-size: 80px;
+    font-weight: 500;
+    line-height: 50px;
+}
+p{
     font-size: 30px;
 }
-.conBox{
-    height: 60px;
-    width: 60px;
-    background: black;
-    border-radius: 100px;
+.varSub{
+    font-size: 24px;
+    padding-top: 20px;
+}
+
+.imgText{
+    margin-top: 50px;
+    height: 400px;
+    width: 300px;
+    background: red;
+    background: url(../assets/two.jpg);
+    background-size: cover;
+    position: absolute;
+    right: 0;
+}
+footer{
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 20px 0;
 }
-
-/* Footer */
-.footertop{
-    height: 150vh;
-    background: black;
-}
-.socialBox{
-    height: 40px;
-    width: 40px;
-    background: black;
-
-}
-
-.footerbottom{
-    padding: 60px 50px 20px;
-}
-.socials{
+.footer{
     display: flex;
-    gap: 30px;
-    justify-content: center;
-    padding-bottom: 50px;
+    justify-content: center ;
+    /* margin-top: 80px; */
 }
-.contact{
-    text-align: center;
+.footer p{
+    opacity: .8;
+    font-size: 12px;
     padding: 10px 0;
+    font-weight: 800;
+    text-transform: uppercase;
 }
-.contact p:nth-child(1){
-    font-size: 20px;
+
+
+
+
+#name {
+    font-size: 2rem;
 }
-.footerDel{
+form button{
+    width: 100%;
+}
+.postWrap {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column-reverse;
 }
-
-
 .postForm{
     display: flex;
     flex-direction: column;
@@ -276,7 +161,7 @@ nav{
 #name{
     border: none;
     margin: 30px 0 0;
-    font-size: 3rem;
+    font-size: 2rem;
 
 }
 .textarea{
@@ -289,144 +174,124 @@ nav{
     backdrop-filter: blur(4px);
     padding: 40px 0;
 }
-
-.boxPosts{
-    padding: 0px 80px 60px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: space-around;
-}
-.boxesPosts{
-    min-height: 440px;
-    width: 350px;
-    /* background: black; */
-    padding: 30px 25px;
-}
-.boxesPosts h1{
-    font-size: xx-large;
-}
-.imgBox{
-    height: 220px;
-    width: 100%;
+.imageTall {
+    margin-bottom: 40px;
+    height: 50vh;
     background: black;
-    margin-bottom: 30px;
+    width: 100%;
+    overflow: hidden;
 }
-.footertop{
-    background: url('../assets/Lady.jpg') no-repeat;
-    background-size: contain;
-}
-.bttnWrap{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+.imageTall img{
+    width: 100%;
 }
 
-@media screen and (max-width: 400px) {
-    .boxPosts {
-        padding: 0px 30px 60px;
-        gap: 10px;
-    }
+@media screen and (min-width: 500px) {
     
-    .boxesPosts{
-    min-height: 440px;
-    width: 450px;
-    /* background: black; */
-    padding: 30px 0px;
-}
     .hero{
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+    }
+    .underText{
+        /* background: url(../assets/two.jpg); */
+        background-size: cover;
+        position: relative;
+        height: 120vh;
+    }
+    h1{
+        font-size: 2.5rem;
+        line-height: 50px;
+    }
+    h3{
+        font-size: 100px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        padding-bottom: 10px;
+    }
+    section{
+        padding: 30px 60px;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .hero{
+        display: flex;
+        flex-direction: initial;
+        background: black;
+        background-size: cover;
+        color: white;
         height: 100vh;
     }
-    .HeroTextWrap{
-        padding: 60px 30px;
-    }
-    .HeroTextWrap p {
-        max-width: 300px;
-    }
-    nav{
-        padding: 0px 0px 0 30px;
-    }
-    .logo h3{
-        font-size: 1rem;
-        font-family: Castle;
-    
-    }
-    .popWrap {
-        width: initial;
-    }
-    h2{
-        font-size: 1.5rem;
-        line-height: 40px;
-    }
-    .popText  {
-        display: block;
-        padding: 30px 30px 0;
-    }
-
-    .posts{
-        padding: 30px 30px 80px;
-    }
-    .postWrap {
+    .InfoSection{
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: row;
+        justify-content: left;
+        gap: 100px;
+        /* padding-bottom: 50px; */
     }
-    .textSection {
-        display: block;
-        place-content: center;
-    }
-    .textWrapSec {
-        width: initial;
-    }
-    .textWrapSec p {
+    .InfoSection h3{
         text-align: left;
+        padding-top: 60px;
     }
-    .imageTall {
-        margin-bottom: 40px;
-        height: 50vh;
+    
+    .bottomText{
+        text-align: left;
+        padding-top: 0px;
+        margin-left: -140px;
+        margin-top: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 30px;
+        width: 800px;
+        padding-bottom: 60px;
     }
-    .imgWrap {
-        /* display: none; */
-        position: relative;
-        z-index: -1;
+    
+    .heroOther{
+        padding-top: 8vh;
+        margin-top: 0px;
+        margin-left: -200px;
+        display: flex;
+        gap: 50px;
     }
-
-
-    .imgBoxs:nth-child(1) {
-        transform: translateY(-2vh) translateX(2vw);
-        height: 377px;
-        width: 322px;
-    }
-    .imgBoxs:nth-child(5) {
-        transform: translateY(15vh) translateX(32vw);
-        height: 202px;
-        width: 246px;
-    }
-    .imgBoxs:nth-child(2) {
-        transform: translateY(116vh) translateX(29vw);
-        height: 232px;
-        width: 258px;
-    }
-    .imgBoxs:nth-child(3) {
-        transform: translateY(98vh) translateX(3vw);
-        height: 243px;
-        width: 213px;
+    .imgSection{
+        height: 100vh;
+        width: 650px;
+        background: url(../assets/BOB02304.jpg);
+        background-size: 100% ;
+        background-position-x: center;
+        background-position-y: center;
+    
+        margin-top: -50px;
     }
     .bttnWrap{
+        padding-top: 20px;
         display: flex;
-        justify-content: center;
+        justify-content: initial;
+        gap: 30px;
     }
-    form button{
-        width: 100%;
+
+    .biggerText{
+        font-size: 15rem;
+        font-weight: 500;
+        line-height: 180px;
     }
-    #name {
-        font-size: 2rem;
+    p{
+        font-size: 40px;
     }
-    
-    section {
-        min-height: 70vh;
+    .varSub{
+        font-size: 24px;
+        padding-top: 20px;
     }
-    .popText {
-        display: block;
-        padding: 88px 30px 0;
+    .imgText{
+        margin-top: 50px;
+        height: 700px;
+        width: 600px;
+        right: 100px;
+        top :-10px;
+        z-index: -1;
+    }
+    .underTextWrap{
+        padding-top: 150px;
     }
 }
