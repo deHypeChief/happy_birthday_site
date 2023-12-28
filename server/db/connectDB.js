@@ -7,7 +7,7 @@ const connectToMongoDB = (db_URL) => {
 
     db.on('error', (error) => {
         console.error('MongoDB connection error:', error);
-        setTimeout(connectToMongoDB, 10000);
+        setTimeout(connectToMongoDB, 20000);
     });
 
     db.once('open', () => {

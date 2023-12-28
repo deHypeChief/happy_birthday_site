@@ -15,26 +15,9 @@ export function Home() {
 
 
 import { Link } from 'react-router-dom'
+import data_a from './hbs_posts.posts.json'
 
 function HomeContent() {
-    const [apiData, setApiData] = useState([]);
-
-    useEffect(() => {
-        // Define the API endpoint
-        const apiUrl = 'https://hbs-api.vercel.app/api';
-
-        axios.get(apiUrl)
-            .then(response => {
-                setApiData(response.data);
-            })
-            .catch(error => {
-                console.log('Error fetching data ', error);
-            });
-    }, []);
-
-
-
-
     return (
         <>
             <section className="hero">
@@ -87,15 +70,7 @@ function HomeContent() {
 
                 </div>
                 <div className="boxPosts">
-                    {apiData.posts?.map(item => (
-                        <div key={item.name} className="boxesPosts">
-                            <div className="imgBox">
-                                <img src={item.img} />
-                            </div>
-                            <h1>{item.name}</h1>
-                            <p>{item.message}</p>
-                        </div>
-                    ))}
+                            
                 </div>
             </section>
             <div className="footer">

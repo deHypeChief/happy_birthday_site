@@ -8,8 +8,12 @@ var mongoose = require('mongoose')
 // get action: Retriving posts
 const getPosts = async (req, res) => {
     try {
-        const posts = await Post.find();
-        res.json({ success: true, posts });
+        const posts_Get  = await Post.find().cursor();
+        posts_Get.eachAsync(doc => {
+            res.json({ success: true, doc });
+            console.log(doc);
+          },{ eachBatch: true }
+          );
 
     } catch (error) {
         res.status(500).json({

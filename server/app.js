@@ -12,11 +12,10 @@ var fs = require('fs');
 require('dotenv').config()
 const PORT = process.env.PORT || 3000
 connectToMongoDB(
-    process.env.NODE_EVN === 'dev' ? 
+    process.env.NODE_EVN === 'prod' ? 
         "mongodb://localhost:27017/happyPost" : 
         process.env.DB_URI 
     )
-console.log(path.join(__dirname, '..', "u"));
 // middleware
 const app = express()
 // app.use(express.json())
