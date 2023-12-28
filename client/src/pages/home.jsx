@@ -1,11 +1,4 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-
-const ApiUrl = 'https://hbs-api.vercel.app/api'
-
 export function Home() {
-
-
     return (
         <>
             <HomeContent />
@@ -15,8 +8,6 @@ export function Home() {
 
 
 import { Link } from 'react-router-dom'
-import data_a from './hbs_posts.posts.json'
-
 function HomeContent() {
     return (
         <>
