@@ -39,8 +39,8 @@ function HomeContent() {
                                 <Link to='https://drive.google.com/file/d/1f4E1U-OuWmUocFg9OuaoMpw1p_c_kwIX/view?usp=sharing'>
                                     <button>Download Event</button>
                                 </Link>
-                                <Link to='/newPost'>
-                                    <button>Write Goodwill</button>
+                                <Link to='https://happy-birthday-site.vercel.app/'>
+                                    <button>See Messages</button>
                                 </Link>
                             </div>
                         </div>
