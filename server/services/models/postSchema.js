@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var postSchema = new mongoose.Schema({
     name: {
         type: String,
+        unique: true,
         required: true
     },
     message: {

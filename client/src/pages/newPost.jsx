@@ -55,10 +55,8 @@ const NewPost = () => {
                 navTo('/')
             })
             .catch((error) => {
-                console.log(formData);
-
                 console.log(error);
-                alert('Error sending your message. Try a different Image')
+                alert(error.response.data.message ? error.response.data.message : 'Error sending your message. Try using a smaller image size')
 
             });
     };
